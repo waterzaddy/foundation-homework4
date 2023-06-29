@@ -36,3 +36,10 @@ def goodbye_greeting(item):
     print(f"Here is your {item}!\n See you again soon!")
     exit(0)
 
+
+def retry_purchase(item, customer_balance, attempts=1):
+    if purchase(item, customer_balance):
+        goodbye_greeting(item)
+    else:
+        attempts += 1
+        retry_purchase(item, customer_balance, attempts)
