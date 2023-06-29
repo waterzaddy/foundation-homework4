@@ -20,3 +20,7 @@ def welcome_message():
         print(f"{item} - £{prices.get(item)}")
 
 
+def goodbye_greeting(item):
+    print(f"Here is your {item}!\n See you again soon!")
+    exit(0)
+
