@@ -13,3 +13,10 @@ def purchase(item, customer_balance):
     else:
         return False
 
+
+def welcome_message():
+    print("Hello & welcome to Kelli's Closet!\nCurrently we have these items for sale:")
+    for item in prices:
+        print(f"{item} - £{prices.get(item)}")
+
+
