@@ -38,8 +38,20 @@ def goodbye_greeting(item):
 
 
 def retry_purchase(item, customer_balance, attempts=1):
+    if attempts == 3:
+        raise ThreeFailedAttempts("Payment failed 3 times. Please exit the store.")
+    add_money = input("Sorry your payment failed, would you like to add to your balance? (Yes/No)")
+    if add_money == "Yes":
+        try:
+            customer_balance += float(input("How much?"))
+        except ValueError:
+            raise ValueError("Invalid input, exiting store")
     if purchase(item, customer_balance):
         goodbye_greeting(item)
     else:
         attempts += 1
         retry_purchase(item, customer_balance, attempts)
+
+
+class ThreeFailedAttempts(Exception):
+    pass
